@@ -23,6 +23,7 @@ public class Periodical extends LibraryItem {
         }
     }
 
+
     public void setPeriodicalType(String type){
             switch (type.toLowerCase()) {
             case "printed":
