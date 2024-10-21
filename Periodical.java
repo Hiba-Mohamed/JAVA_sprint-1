@@ -3,7 +3,7 @@ package JAVA_sprint_1;
 public class Periodical extends LibraryItem {
     private boolean printed = false;
     private boolean electronic = false;
-    private boolean audio= false;
+
 
     public Periodical(String title,String ISBN,String publisher,int numberOfCopies,Author author,String type){
         super(title, ISBN, publisher, numberOfCopies, author);
@@ -14,11 +14,8 @@ public class Periodical extends LibraryItem {
             case "electronic":
                 this.electronic = true;
                 break;
-            case "audio":
-                this.audio = true;
-                break;
             default:
-            System.err.println("Invalid book type: Please enter a valid book type ('printed' or 'electronic' or 'audio')");
+            System.err.println("Invalid periodical type: Please enter a valid periodical type ('printed' or 'electronic')");
                 break;
         }
     }
