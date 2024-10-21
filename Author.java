@@ -8,7 +8,7 @@ public class Author{
     private Date dateOfBirth;
     private ArrayList<LibraryItem> writtenItems;
 
-        public Author(String name, String address){
+    public Author(String name, String address){
         this.name = name;
         this.address = address;
         this.writtenItems = new ArrayList<LibraryItem>();
@@ -50,6 +50,15 @@ public class Author{
 
     public ArrayList<LibraryItem> getwrittenItems(){
         return this.writtenItems;
+    }
+
+    public String toString(){
+        return "Author Info {" +
+            "Name =" + this.name +
+            ", Address='" + this.address + '\'' +
+            ", DOB='" + this.dateOfBirth + '\'' +
+            ", Written Items='" + this.writtenItems + '\'' +
+            '}';
     }
 
 }
