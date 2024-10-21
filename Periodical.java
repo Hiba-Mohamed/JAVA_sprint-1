@@ -57,7 +57,7 @@ public class Periodical extends LibraryItem {
         return "Periodical Info {" +
             "ID=" + getID() +
             ", Title='" + getTitle() + '\'' +
-            ", ISBN='" + getISBN() + '\'' +
+            ", ISBN='" + getisbn() + '\'' +
             ", Publisher='" + getPublisher() + '\'' +
             ", NumberOfCopies=" + getNumberOfCopies() +
             ", Periodical Type=" + this.getPeriodicalType() +
