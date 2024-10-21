@@ -1,81 +1,80 @@
-// package JAVA_sprint_1;
-// import java.util.Scanner;
+package JAVA_sprint_1;
+import java.util.Scanner;
 
-// public class Demo {
-//  //*
-// // This is just one example of how a menu can look using a scanner
-// // This isnt complete nor does it have all required sections included
-// // This is just meant to give you a brief idea of how a menu could look
-// // Good luck and have fun!
-// //
-// //
-// // *//
+public class Demo {
+ //*
+// This is just one example of how a menu can look using a scanner
+// This isnt complete nor does it have all required sections included
+// This is just meant to give you a brief idea of how a menu could look
+// Good luck and have fun!
+//
+//
+// *//
 
 
 
-//     public static void main(String[] args) {
-//         Scanner scanner = new Scanner(System.in);
-//         int choice;
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int choice;
 
-//         do {
-//             System.out.println("Welcome to the Library Management System");
-//             // there are more options needed for the project.
-//             System.out.println("1. Add Library Item");
-//             System.out.println("2. Edit Library Item");
-//             System.out.println("3. Delete Library Item");
-//             System.out.println("4. Borrow Library Item");
-//             System.out.println("5. Return Library Item");
-//             System.out.println("6. Exit");
-//             System.out.print("Enter your choice (1-6): ");
-//             choice = scanner.nextInt();
+        do {
+            System.out.println("Welcome to the Library Management System");
+            // there are more options needed for the project.
+            System.out.println("1. Add Library Item");
+            System.out.println("2. Edit Library Item");
+            System.out.println("3. Delete Library Item");
+            System.out.println("4. Borrow Library Item");
+            System.out.println("5. Return Library Item");
+            System.out.println("6. Exit");
+            System.out.print("Enter your choice (1-6): ");
+            choice = scanner.nextInt();
 
-//             switch (choice) {
-//                 case 1:
-//                     System.out.println("Adding a new library item...");
-//                     // Add logic to add a library item
-//                     System.out.println("Enter the type of Library item?: ");
-//                     String itemType = scanner.nextLine();
+            switch (choice) {
+                case 1:
+                    System.out.println("Adding a new library item...");
+                    // Add logic to add a library item
+                    System.out.println("Enter the type of Library item?: ");
+                    String itemType = scanner.nextLine();
 
-//                     System.out.print("Enter Title: ");
-//                     String title = scanner.nextLine();
-//                     System.out.print("Enter ISBN: ");
-//                     String ISBN = scanner.nextLine();
-//                     System.out.print("Enter publisher: ");
-//                     String publisher = scanner.nextLine();
-//                     System.out.print("Enter total copies: ");
-//                     int totalCopies = scanner.nextInt();
-//                     System.out.print("Enter available copies: ");
-//                     int availableCopies = scanner.nextInt();
-//                     scanner.nextLine();
-//                     LibraryItem libraryItem = new LibraryItem(title,ISBN,publisher,availableCopies)
+                    System.out.print("Enter Title: ");
+                    String title = scanner.nextLine();
+                    System.out.print("Enter ISBN: ");
+                    String ISBN = scanner.nextLine();
+                    System.out.print("Enter publisher: ");
+                    String publisher = scanner.nextLine();
+                    System.out.print("Enter total copies: ");
+                    int totalCopies = scanner.nextInt();
+                    System.out.print("Enter available copies: ");
+                    int availableCopies = scanner.nextInt();
+                    scanner.nextLine();
+                    LibraryItem libraryItem = new LibraryItem(title,ISBN,publisher,availableCopies);
+                    break;
+                case 2:
+                    System.out.println("Editing an existing library item...");
+                    // Add logic to edit a library item
+                    break;
+                case 3:
+                    System.out.println("Deleting a library item...");
+                    // Add logic to delete a library item
+                    break;
+                case 4:
+                    System.out.println("Borrowing a library item...");
+                    // Add logic to borrow a library item
+                    break;
+                case 5:
+                    System.out.println("Returning a library item...");
+                    // Add logic to return a library item
+                    break;
+                case 6:
+                    System.out.println("Exiting the system. Goodbye!");
+                    break;
+                default:
+                    System.out.println("Invalid choice. Please enter a number between 1 and 6.");
+            }
+        } while (choice != 6);
 
-//                     break;
-//                 case 2:
-//                     System.out.println("Editing an existing library item...");
-//                     // Add logic to edit a library item
-//                     break;
-//                 case 3:
-//                     System.out.println("Deleting a library item...");
-//                     // Add logic to delete a library item
-//                     break;
-//                 case 4:
-//                     System.out.println("Borrowing a library item...");
-//                     // Add logic to borrow a library item
-//                     break;
-//                 case 5:
-//                     System.out.println("Returning a library item...");
-//                     // Add logic to return a library item
-//                     break;
-//                 case 6:
-//                     System.out.println("Exiting the system. Goodbye!");
-//                     break;
-//                 default:
-//                     System.out.println("Invalid choice. Please enter a number between 1 and 6.");
-//             }
-//         } while (choice != 6);
-
-//         scanner.close();
-//     }
-// }
+        scanner.close();
+    }
+}
    
 

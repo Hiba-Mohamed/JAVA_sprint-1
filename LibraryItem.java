@@ -10,6 +10,15 @@ public class LibraryItem {
     private Author author;
 
 
+    public LibraryItem(String title,String ISBN,String publisher,int numberOfCopies){
+        this.ID = nextId;
+        this.title = title;
+        this.ISBN = ISBN;
+        this.publisher = publisher;
+        this.numberOfCopies = numberOfCopies;
+        incrementNextId();  
+      }
+
     public LibraryItem(String title,String ISBN,String publisher,int numberOfCopies,Author author){
         this.ID = nextId;
         this.title = title;
