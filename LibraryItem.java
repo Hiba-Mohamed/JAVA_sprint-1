@@ -33,16 +33,40 @@ public class LibraryItem {
         nextId++;
     }
 
-@Override
-public String toString() {
-    return "Library Item {" +
-           "ID=" + ID +
-           ", Title='" + title + '\'' +
-           ", ISBN='" + ISBN + '\'' +
-           ", Publisher='" + publisher + '\'' +
-           ", NumberOfCopies=" + numberOfCopies +
-           '}';
-}
+    public int getID() {
+        return this.ID;
+    }
+
+    public String getTitle() {
+        return this.title;
+    }
+
+    public String getISBN() {
+        return this.ISBN;
+    }
+
+    public String getPublisher() {
+        return this.publisher;
+    }
+
+    public int getNumberOfCopies() {
+        return this.numberOfCopies;
+    }
+
+    public Author getAuthor() {
+        return this.author;
+    }
+
+    @Override
+    public String toString() {
+        return "Library Item {" +
+            "ID=" + getID() +
+            ", Title='" + getTitle() + '\'' +
+            ", ISBN='" + getISBN() + '\'' +
+            ", Publisher='" + getPublisher() + '\'' +
+            ", NumberOfCopies=" + getNumberOfCopies() +
+            '}';
+    }
 
 
     
