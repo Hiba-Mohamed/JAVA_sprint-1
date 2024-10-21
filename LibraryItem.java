@@ -33,13 +33,17 @@ public class LibraryItem {
         nextId++;
     }
 
-    public void editLibraryItem(String title,String ISBN,String publisher,int numberOfCopies,Author author){
-        
-        this.title = title;
-        this.ISBN = ISBN;
-        this.publisher = publisher;
-        this.numberOfCopies = numberOfCopies;
-        this.author = author;
-    }
+@Override
+public String toString() {
+    return "Library Item {" +
+           "ID=" + ID +
+           ", Title='" + title + '\'' +
+           ", ISBN='" + ISBN + '\'' +
+           ", Publisher='" + publisher + '\'' +
+           ", NumberOfCopies=" + numberOfCopies +
+           '}';
+}
+
+
     
 }
