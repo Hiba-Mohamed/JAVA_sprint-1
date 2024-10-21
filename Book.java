@@ -23,14 +23,33 @@ public class Book extends LibraryItem {
             }
     }
 
-@Override
-public String toString() {
-    return "Library Item {" +
-           "ID=" + this.ID +
-           ", Title='" + title + '\'' +
-           ", ISBN='" + ISBN + '\'' +
-           ", Publisher='" + publisher + '\'' +
-           ", NumberOfCopies=" + numberOfCopies +
-           '}';
-}    
+    public String getBookType(){
+        if (this.printed == true){
+            return "Printed";}
+        else{
+            if(this.electronic == true){
+                return "Electronic";
+            }
+            else{
+                if(this.audio == true){
+                    return "Audio";
+                }
+                else return "Not Specified";
+            }
+        }
+
+    }
+
+    @Override
+    public String toString() {
+        return "Book Info {" +
+            "ID=" + getID() +
+            ", Title='" + getTitle() + '\'' +
+            ", ISBN='" + getISBN() + '\'' +
+            ", Publisher='" + getPublisher() + '\'' +
+            ", NumberOfCopies=" + getNumberOfCopies() +
+            ", Book Type=" + this.getBookType() +
+            '}';
+    }
+  
 }

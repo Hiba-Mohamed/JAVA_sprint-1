@@ -60,11 +60,11 @@ public class LibraryItem {
     @Override
     public String toString() {
         return "Library Item {" +
-            "ID=" + getID() +
-            ", Title='" + getTitle() + '\'' +
-            ", ISBN='" + getISBN() + '\'' +
-            ", Publisher='" + getPublisher() + '\'' +
-            ", NumberOfCopies=" + getNumberOfCopies() +
+            "ID=" + this.ID +
+            ", Title='" + this.title + '\'' +
+            ", ISBN='" + this.ISBN + '\'' +
+            ", Publisher='" + this.publisher + '\'' +
+            ", NumberOfCopies=" + this.numberOfCopies +
             '}';
     }
 
