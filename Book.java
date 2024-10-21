@@ -45,7 +45,7 @@ public class Book extends LibraryItem {
         return "Book Info {" +
             "ID=" + getID() +
             ", Title='" + getTitle() + '\'' +
-            ", ISBN='" + getISBN() + '\'' +
+            ", ISBN='" + getisbn() + '\'' +
             ", Publisher='" + getPublisher() + '\'' +
             ", NumberOfCopies=" + getNumberOfCopies() +
             ", Book Type=" + this.getBookType() +
