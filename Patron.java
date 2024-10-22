@@ -34,12 +34,20 @@ public class Patron {
 
     // Add a library item to the borrowed items list
     public void borrowItem(LibraryItem item) {
+        if (item != null){ //To ensure no null/invalid items are added
         borrowedItems.add(item);
         System.out.println(item.getTitle() + " has been borrowed by " + this.name);
+        } else {
+        System.out.println("Cannot borrow a null item.");
+        }
     }
 
     // Remove a library item from the borrowed items list
     public void returnItem(LibraryItem item) {
+        if (item == null) {
+        System.out.println("Cannot return a null item.");
+        return; //To exit early if it's null/invalid
+        }
         if (borrowedItems.contains(item)) {
             borrowedItems.remove(item);
             System.out.println(item.getTitle() + " has been returned by " + this.name);
@@ -50,6 +58,10 @@ public class Patron {
 
     // Search for borrowed items by title
     public LibraryItem searchBorrowedItemByTitle(String title) {
+        if (title == null || title.isEmpty()) {
+            System.out.println("Invalid title search.");
+        return null; // To make sure that no invalid input is entered
+        }
         for (LibraryItem item : this.borrowedItems) {
             if (item.getTitle().equalsIgnoreCase(title)) {
                 return item;
