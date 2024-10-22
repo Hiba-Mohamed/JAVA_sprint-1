@@ -1,4 +1,5 @@
-package JAVA_sprint_1;
+package JAVA_sprint_1.Items;
+import JAVA_sprint_1.Authors.Author;
 
 public class Periodical extends LibraryItem {
     private boolean printed = false;
@@ -57,7 +58,7 @@ public class Periodical extends LibraryItem {
         return "Periodical Info {" +
             "ID=" + getID() +
             ", Title='" + getTitle() + '\'' +
-            ", ISBN='" + getisbn() + '\'' +
+            ", ISBN='" + getISBN() + '\'' +
             ", Publisher='" + getPublisher() + '\'' +
             ", NumberOfCopies=" + getNumberOfCopies() +
             ", Periodical Type=" + this.getPeriodicalType() +

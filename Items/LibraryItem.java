@@ -1,4 +1,5 @@
-package JAVA_sprint_1;
+package JAVA_sprint_1.Items;
+import JAVA_sprint_1.Authors.Author;
 
 public class LibraryItem {
     private static int nextId = 0;

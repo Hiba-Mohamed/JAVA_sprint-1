@@ -1,4 +1,6 @@
-package JAVA_sprint_1;
+package JAVA_sprint_1.Authors;
+
+import JAVA_sprint_1.Items.LibraryItem;
 import java.util.Date;
 import java.util.ArrayList;
 

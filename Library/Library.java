@@ -1,4 +1,8 @@
-package JAVA_sprint_1;
+package JAVA_sprint_1.Library;
+
+import JAVA_sprint_1.Items.LibraryItem;
+import JAVA_sprint_1.Authors.Author;
+import JAVA_sprint_1.Patrons.Patron;
 import java.util.ArrayList;
 
 public class Library {
@@ -12,24 +16,25 @@ public class Library {
         this.authors = new ArrayList<Author>();
     }
 
-    public void addNewLibraryItem(){
+    // public void addNewLibraryItem(){
 
-    }
+    // }
 
-    public void editExistingLibraryItem(){
+    // public void editExistingLibraryItem(){
 
-    }
+    // }
 
-    public void deleteExistingLibraryItem(){
+    // public void deleteExistingLibraryItem(){
 
-    }
+    // }
 
-    public void borrowExistingLibraryItem(){
+    // public void borrowExistingLibraryItem(){
 
-    }
+    // }
 
     // public LibraryItem returnExistingLibraryItem(){
         
     // }
     
 }
+

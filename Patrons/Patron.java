@@ -1,4 +1,6 @@
-package JAVA_sprint_1;
+package JAVA_sprint_1.Patrons;
+
+import JAVA_sprint_1.Items.LibraryItem;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -78,56 +80,6 @@ public class Patron {
                 ", address='" + address + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", borrowedItems=" + borrowedItems +
-                '}';
-    }
-}
-
-// Subclass for Student patrons
-class StudentPatron extends Patron {
-    private String studentID;
-
-    public StudentPatron(String name, String address, String phoneNumber, String studentID) {
-        super(name, address, phoneNumber);
-        this.studentID = studentID;
-    }
-
-    public String getStudentID() {
-        return this.studentID;
-    }
-
-    @Override
-    public String toString() {
-        return "StudentPatron{" +
-                "studentID='" + this.studentID + '\'' +
-                ", name='" + getName() + '\'' +
-                ", address='" + getAddress() + '\'' +
-                ", phoneNumber='" + getPhoneNumber() + '\'' +
-                ", borrowedItems=" + getBorrowedItems() +
-                '}';
-    }
-}
-
-// Subclass for Employee patrons
-class EmployeePatron extends Patron {
-    private String employeeID;
-
-    public EmployeePatron(String name, String address, String phoneNumber, String employeeID) {
-        super(name, address, phoneNumber);
-        this.employeeID = employeeID;
-    }
-
-    public String getEmployeeID() {
-        return this.employeeID;
-    }
-
-    @Override
-    public String toString() {
-        return "EmployeePatron{" +
-                "employeeID='" + this.employeeID + '\'' +
-                ", name='" + getName() + '\'' +
-                ", address='" + getAddress() + '\'' +
-                ", phoneNumber='" + getPhoneNumber() + '\'' +
-                ", borrowedItems=" + getBorrowedItems() +
                 '}';
     }
 }
