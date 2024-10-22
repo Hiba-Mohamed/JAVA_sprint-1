@@ -33,7 +33,7 @@ public class Demo {
                 case 1:
                     System.out.println("Adding a new library item...");
                     // Add logic to add a library item
-                    System.out.println("Enter the type of Library item?: ");
+                    System.out.println("Enter the type of Library item: ");
                     String itemType = scanner.nextLine();
 
                     System.out.print("Enter Title: ");
