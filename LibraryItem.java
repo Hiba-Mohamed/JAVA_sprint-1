@@ -61,7 +61,7 @@ public class LibraryItem {
         return this.title;
     }
 
-    public String getisbn() {
+    public String getISBN() {
         return this.isbn;
     }
 
