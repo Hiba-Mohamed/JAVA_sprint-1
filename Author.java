@@ -44,11 +44,11 @@ public class Author{
         return this.dateOfBirth;
     }
 
-    public void setwrittenItems(ArrayList<LibraryItem> writtenItems){
+    public void setWrittenItems(ArrayList<LibraryItem> writtenItems){
         this.writtenItems = writtenItems;
     }
 
-    public ArrayList<LibraryItem> getwrittenItems(){
+    public ArrayList<LibraryItem> getWrittenItems(){
         return this.writtenItems;
     }
 
