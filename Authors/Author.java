@@ -6,29 +6,33 @@ import java.util.Date;
 import java.util.ArrayList;
 
 public class Author{
-    private String name;
+    private String firstName;
+    private String lastName;
     private String address;
     private Date dateOfBirth;
     private ArrayList<LibraryItem> writtenItems;
 
-    public Author(String name, String address){
-        this.name = name;
+    public Author(String firstName, String lastName, String address){
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.address = address;
         this.writtenItems = new ArrayList<LibraryItem>();
     }
 
-    public Author(String name, String address, ArrayList<LibraryItem> writtenItems ){
-        this.name = name;
+    public Author(String firstName, String lastName, String address, ArrayList<LibraryItem> writtenItems ){
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.address = address;
         this.writtenItems = writtenItems;
     }
 
-    public void setName(String name){
-        this.name = name;
+    public void setName(String firstName, String lastName){
+        this.firstName = firstName;
+        this.lastName = lastName;
     }
 
     public String getName(){
-        return this.name;
+        return this.firstName + ' ' +this.lastName;
     }
 
     public void setAddress(String address){
@@ -57,7 +61,7 @@ public class Author{
 
     public String toString(){
         return "Author Info {" +
-            "Name =" + this.name +
+            "Name =" + this.firstName + ' ' + this.lastName +
             ", Address='" + this.address + '\'' +
             ", DOB='" + this.dateOfBirth + '\'' +
             ", Written Items='" + this.writtenItems + '\'' +

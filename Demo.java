@@ -1,5 +1,8 @@
 import Items.*;
+import Library.Library;
 import java.util.Scanner;
+
+import Authors.Author;
 
 public class Demo {
  //*
@@ -28,16 +31,24 @@ public class Demo {
             System.out.println("6. Exit");
             System.out.print("Enter your choice (1-6): ");
             choice = scanner.nextInt();
+            Library library = new Library();
 
             switch (choice) {
                 case 1:
                     System.out.println("Adding a new library item...");
                     // Add logic to add a library item
-                    System.out.println("Enter the type of Library item: ");
+                    System.out.println("Enter the type ('book' or 'periodical') of Library item: ");
+                    String bookORperiodical = scanner.nextLine();
+                    System.out.println("Specify 'audio', 'printed', or 'electronic': ");
                     String itemType = scanner.nextLine();
-
                     System.out.print("Enter Title: ");
                     String title = scanner.nextLine();
+                    System.out.print("Enter Authors first name: ");
+                    String authorFname = scanner.nextLine();
+                    System.out.print("Enter Authors last name: ");
+                    String authorLname = scanner.nextLine();
+                    System.out.print("Enter Authors Address: ");
+                    String authorAddress = scanner.nextLine();
                     System.out.print("Enter ISBN: ");
                     String ISBN = scanner.nextLine();
                     System.out.print("Enter publisher: ");
@@ -46,16 +57,33 @@ public class Demo {
                     int totalCopies = scanner.nextInt();
                     System.out.print("Enter available copies: ");
                     int availableCopies = scanner.nextInt();
+                    Author author = new Author(authorFname, authorLname, authorAddress);
                     scanner.nextLine();
+                    if (bookORperiodical == "book"){
+                        Book book = new Book()
+
+                    }
+                    else{
+                        if (bookORperiodical == "periodical"){
+
+                        }
+                        else{
+                            System.out.println("Error, invalid entry for type, item not added");
+                        }
+                    }
+
                     LibraryItem libraryItem = new LibraryItem(title,ISBN,publisher,availableCopies);
+                    library.addLibraryItem(libraryItem);
                     break;
                 case 2:
                     System.out.println("Editing an existing library item...");
-                    // Add logic to edit a library item
                     break;
                 case 3:
                     System.out.println("Deleting a library item...");
-                    // Add logic to delete a library item
+                    String itemISBN = scanner.nextLine();
+                    scanner.nextLine();
+                    LibraryItem item = library.searchItemByISBN(itemISBN);
+                    library.removeLibraryItem(item);
                     break;
                 case 4:
                     System.out.println("Borrowing a library item...");
