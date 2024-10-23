@@ -1,6 +1,8 @@
 package Items;
 
 import Authors.*;
+import java.util.Date;
+
 public class Book extends LibraryItem {
     private boolean printed = false;
     private boolean electronic = false;
@@ -25,6 +27,15 @@ public class Book extends LibraryItem {
                 System.err.println("Invalid book type: Please enter a valid book type ('printed' or 'electronic' or 'audio')");
                     break;
             }
+    }
+
+    public void setInfo(String title,String ISBN,String publisher,int numberOfCopies,String authorFname, String authorLname, String address, Date dateOfBirth , String type){
+        this.setTitle(title);
+        this.setISBN(ISBN);
+        this.setPublisher(publisher);
+        this.setNumberOfCopies(numberOfCopies);
+        this.setAuthor(authorFname, authorLname, address, dateOfBirth);
+        this.setBookType(type);
     }
 
     public void setBookType(String type){

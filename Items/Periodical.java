@@ -1,6 +1,7 @@
 package Items;
 
 import Authors.*;
+import java.util.Date;
 public class Periodical extends LibraryItem {
     private boolean printed = false;
     private boolean electronic = false;
@@ -22,6 +23,15 @@ public class Periodical extends LibraryItem {
             System.err.println("Invalid periodical type: Please enter a valid periodical type ('printed' or 'electronic')");
                 break;
         }
+    }
+
+    public void setInfo(String title,String ISBN,String publisher,int numberOfCopies,String authorFname, String authorLname, String address, Date dateOfBirth , String type){
+        this.setTitle(title);
+        this.setISBN(ISBN);
+        this.setPublisher(publisher);
+        this.setNumberOfCopies(numberOfCopies);
+        this.setAuthor(authorFname, authorLname, address, dateOfBirth);
+        this.setPeriodicalType(type);
     }
 
 

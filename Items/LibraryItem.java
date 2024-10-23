@@ -2,6 +2,7 @@ package Items;
 
 
 import Authors.*;
+import java.util.Date;
 public class LibraryItem {
     private static int nextId = 0;
     private int ID;
@@ -51,8 +52,10 @@ public class LibraryItem {
         this.numberOfCopies = numberOfCopies;
     }
 
-    public void setAuthor(Author author) {
-        this.author = author;
+    public void setAuthor(String firstName, String lastName, String address, Date dateOfBirth ) {
+        this.author.setName(firstName, lastName);
+        this.author.setAddress(address);
+        this.author.setDateOfBirth(dateOfBirth);
     }
 
     public int getID() {

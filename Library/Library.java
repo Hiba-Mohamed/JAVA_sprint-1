@@ -113,6 +113,10 @@ public class Library {
         return null;
     }
 
+    public void editExistingItem(LibraryItem item){
+
+    }
+
     // Display all library items
     public void displayAllItems() {
         if (libraryItems.isEmpty()) {
