@@ -19,6 +19,7 @@ public class Demo {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int choice;
+        Library library = new Library();
 
         do {
             System.out.println("Welcome to the Library Management System");
@@ -31,7 +32,7 @@ public class Demo {
             System.out.println("6. Exit");
             System.out.print("Enter your choice (1-6): ");
             choice = scanner.nextInt();
-            Library library = new Library();
+            scanner.nextLine(); 
 
             switch (choice) {
                 case 1:
@@ -58,26 +59,35 @@ public class Demo {
                     System.out.print("Enter available copies: ");
                     int availableCopies = scanner.nextInt();
                     Author author = new Author(authorFname, authorLname, authorAddress);
-                    if (!library.authorExistsInLibrary(authorFname, authorLname)){
+                    if (!library.authorExistsInLibrary(authorFname, authorLname) && bookORperiodical.equalsIgnoreCase("book")){
                         library.addNewAuthor(author);
-
-                    }
-                    scanner.nextLine();
-                    if (bookORperiodical == "book"){
-                        Book book = new Book()
-
+                        Book book = new Book(title,ISBN,publisher,availableCopies, author, itemType);
+                        library.addLibraryItem(book);
                     }
                     else{
-                        if (bookORperiodical == "periodical"){
+                        if (library.authorExistsInLibrary(authorFname, authorLname) && bookORperiodical.equalsIgnoreCase("book")){
+                            Book book = new Book(title,ISBN,publisher,availableCopies, author, itemType);
+                            library.addLibraryItem(book);
 
                         }
                         else{
-                            System.out.println("Error, invalid entry for type, item not added");
-                        }
-                    }
+                            if (!library.authorExistsInLibrary(authorFname, authorLname) && bookORperiodical.equalsIgnoreCase("periodical")) {
+                                library.addNewAuthor(author);
+                                Periodical periodical = new Periodical(title, ISBN, publisher, availableCopies, author, itemType);
+                                library.addLibraryItem(periodical);
 
-                    LibraryItem libraryItem = new LibraryItem(title,ISBN,publisher,availableCopies);
-                    library.addLibraryItem(libraryItem);
+                            }
+                            else{
+                                if (library.authorExistsInLibrary(authorFname, authorLname) && bookORperiodical.equalsIgnoreCase("periodical")){
+                                Periodical periodical = new Periodical(title, ISBN, publisher, availableCopies, author, itemType);
+                                library.addLibraryItem(periodical);}
+                                else{
+                                System.out.println("Error, invalid entry for type, item not added");
+                                    }                            
+                                }
+                        }
+                        
+                    }
                     break;
                 case 2:
                     System.out.println("Editing an existing library item...");
