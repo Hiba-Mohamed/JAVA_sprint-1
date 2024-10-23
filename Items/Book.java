@@ -1,3 +1,6 @@
+package Items;
+
+import Authors.*;
 public class Book extends LibraryItem {
     private boolean printed = false;
     private boolean electronic = false;

@@ -1,5 +1,7 @@
+package Items;
 
 
+import Authors.*;
 public class LibraryItem {
     private static int nextId = 0;
     private int ID;

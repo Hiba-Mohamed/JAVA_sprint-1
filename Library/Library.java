@@ -1,3 +1,7 @@
+package Library;
+
+import Items.*;
+import Patrons.*;
 import java.util.ArrayList;
 
 public class Library {
