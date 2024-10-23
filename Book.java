@@ -1,6 +1,3 @@
-package JAVA_sprint_1.Items;
-import JAVA_sprint_1.Authors.Author;
-
 public class Book extends LibraryItem {
     private boolean printed = false;
     private boolean electronic = false;
