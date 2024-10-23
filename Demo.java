@@ -58,6 +58,10 @@ public class Demo {
                     System.out.print("Enter available copies: ");
                     int availableCopies = scanner.nextInt();
                     Author author = new Author(authorFname, authorLname, authorAddress);
+                    if (!library.authorExistsInLibrary(authorFname, authorLname)){
+                        library.addNewAuthor(author);
+
+                    }
                     scanner.nextLine();
                     if (bookORperiodical == "book"){
                         Book book = new Book()

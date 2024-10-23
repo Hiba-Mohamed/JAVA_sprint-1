@@ -88,6 +88,20 @@ public class Library {
         return null;
     }
 
+    public boolean authorExistsInLibrary(String firstName, String lastName) {
+        String fullName = firstName + " " + lastName;
+        for (Author author : this.authors) {
+            if (author.getName().equalsIgnoreCase(fullName)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void addNewAuthor(Author author){
+        this.authors.add(author);
+    }
+
     // Search for a library item by ISBN
     public LibraryItem searchItemByISBN(String isbn) {
         for (LibraryItem item : this.libraryItems) {
