@@ -4,14 +4,18 @@ import Items.*;
 import Patrons.*;
 import java.util.ArrayList;
 
+import Authors.Author;
+
 public class Library {
     private ArrayList<LibraryItem> libraryItems;  // List of all library items (books, periodicals, etc.)
     private ArrayList<Patron> patrons;  // List of registered patrons
+    private ArrayList<Author> authors;
 
     // Constructor
     public Library() {
         this.libraryItems = new ArrayList<>();  // Initialize the list of library items
         this.patrons = new ArrayList<>();       // Initialize the list of patrons
+        this.authors = new ArrayList<>();
     }
 
     // Add a new LibraryItem (book, periodical, etc.)
