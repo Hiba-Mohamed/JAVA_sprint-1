@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class Library {
     private ArrayList<LibraryItem> libraryItems;  // List of all library items (books, periodicals, etc.)
-    private ArrayList<Patron> patrons;  // List of registered patrons (students, employees, etc.)
+    private ArrayList<Patron> patrons;  // List of registered patrons
 
     // Constructor
     public Library() {
@@ -47,7 +47,7 @@ public class Library {
     // Borrow an item by a patron
     public void borrowItem(Patron patron, LibraryItem item) {
         if (this.libraryItems.contains(item) && patron != null) {
-            patron.borrowItem(item);
+            patron.borrowItem(item);  // Assuming Patron class has a borrowItem() method
             System.out.println(patron.getName() + " has borrowed " + item.getTitle());
         } else {
             System.out.println("The item is not available or the patron is invalid.");
@@ -57,7 +57,7 @@ public class Library {
     // Return an item by a patron
     public void returnItem(Patron patron, LibraryItem item) {
         if (patron != null) {
-            patron.returnItem(item);
+            patron.returnItem(item);  // Assuming Patron class has a returnItem() method
             System.out.println(patron.getName() + " has returned " + item.getTitle());
         }
     }
@@ -70,6 +70,28 @@ public class Library {
             }
         }
         System.out.println("Item with title '" + title + "' not found.");
+        return null;
+    }
+
+    // Search for a library item by author
+    public LibraryItem searchItemByAuthor(String authorName) {
+        for (LibraryItem item : this.libraryItems) {
+            if (item.getAuthor() != null && item.getAuthor().getName().equalsIgnoreCase(authorName)) {
+                return item;
+            }
+        }
+        System.out.println("No items found for author '" + authorName + "'.");
+        return null;
+    }
+
+    // Search for a library item by ISBN
+    public LibraryItem searchItemByISBN(String isbn) {
+        for (LibraryItem item : this.libraryItems) {
+            if (item.getISBN().equals(isbn)) {
+                return item;
+            }
+        }
+        System.out.println("Item with ISBN '" + isbn + "' not found.");
         return null;
     }
 
