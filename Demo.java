@@ -23,7 +23,10 @@ public class Demo {
         Scanner scanner = new Scanner(System.in);
         int choice;
         Library library = new Library();
-
+            Book book1 = new Book("BookTitle1", "BOOKISBN1", "BOOKpublisher1", 9, new Author("firstName", "lastName", "1street"), "audio");
+            Periodical periodical1 = new Periodical("PERIODICALTitle1", "PERIODICALISBN1", "PERIODICALpublisher1", 9, new Author("firstName", "lastName", "1street"), "printed");
+            library.addLibraryItem(book1);
+            library.addLibraryItem(periodical1);
         do {
             System.out.println("Welcome to the Library Management System");
             // there are more options needed for the project.
@@ -36,6 +39,7 @@ public class Demo {
             System.out.print("Enter your choice (1-6): ");
             choice = scanner.nextInt();
             scanner.nextLine(); 
+            library.displayAllItems();
 
             switch (choice) {
                 case 1:
@@ -69,12 +73,19 @@ public class Demo {
                         Book book = new Book(title,ISBN,publisher,availableCopies, author, itemType);
                         library.addLibraryItem(book);
                         System.out.println("Item Added Successfully! ");
+                        System.out.println("");
+                        library.displayAllItems();
+                        
+
                     }
                     else{
                         if (library.authorExistsInLibrary(authorFname, authorLname) && bookORperiodical.equalsIgnoreCase("book")){
                             Book book = new Book(title,ISBN,publisher,availableCopies, author, itemType);
                             library.addLibraryItem(book);
                             System.out.println("Item Added Successfully! ");
+                            System.out.println("");
+                            library.displayAllItems();
+
                         }
                         else{
                             if (!library.authorExistsInLibrary(authorFname, authorLname) && bookORperiodical.equalsIgnoreCase("periodical")) {
@@ -82,13 +93,19 @@ public class Demo {
                                 Periodical periodical = new Periodical(title, ISBN, publisher, availableCopies, author, itemType);
                                 library.addLibraryItem(periodical);
                                 System.out.println("Item Added Successfully! ");
+                                System.out.println("");
+                                library.displayAllItems();
+
                             }
                             else{
                                 if (library.authorExistsInLibrary(authorFname, authorLname) && bookORperiodical.equalsIgnoreCase("periodical")){
                                 Periodical periodical = new Periodical(title, ISBN, publisher, availableCopies, author, itemType);
+                                System.out.println("");
                                 library.addLibraryItem(periodical);}
                                 else{
                                 System.out.println("Error, invalid entry for type, item not added");
+                                library.displayAllItems();
+
                                     }                            
                                 }
                         }
@@ -96,6 +113,7 @@ public class Demo {
                     }
                     break;
                 case 2:
+                    library.displayAllItems();
                     System.out.println("Editing an existing library item...");
                     System.out.print("Enter Item ISBN: ");
                     String isbn = scanner.nextLine();
@@ -134,18 +152,25 @@ public class Demo {
                 if (specifiedItem instanceof Book ){
                         Book bookItem = (Book) specifiedItem; // Cast to Book
                         bookItem.setInfo(newTitle, newISBN, newPublisher, newNumberOfCopies, newAuthorFirstName,newAuthorLastName, newAuthorAddress, authorDOBDate, newType);
+                        System.out.println("");
+                        library.displayAllItems();
+
                     }
                 else{
                     Periodical bookItem = (Periodical) specifiedItem; // Cast to Book
                     bookItem.setInfo(newTitle, newISBN, newPublisher, newNumberOfCopies, newAuthorFirstName,newAuthorLastName, newAuthorAddress, authorDOBDate, newType);
+                    System.out.println("");
+                    library.displayAllItems();
+
                 }
                     break;
                 case 3:
                     System.out.println("Deleting a library item...");
+                    System.out.println("Enter Item ISBN: ");
                     String itemISBN = scanner.nextLine();
-                    scanner.nextLine();
                     LibraryItem item = library.searchItemByISBN(itemISBN);
                     library.removeLibraryItem(item);
+                    System.out.println("");
                     break;
                 case 4:
                     System.out.println("Borrowing a library item...");
