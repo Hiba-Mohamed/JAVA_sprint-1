@@ -1,12 +1,13 @@
+import Authors.Author;
 import Items.*;
 import Library.Library;
-import java.util.Date;
-import java.util.Scanner;
+import Patrons.Patron;
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
-import java.time.ZoneId;
-import Authors.Author;
+import java.util.Date;
+import java.util.Scanner;
 
 public class Demo {
  //*
@@ -17,8 +18,6 @@ public class Demo {
 //
 //
 // *//
-
-
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -66,7 +65,7 @@ public class Demo {
                     scanner.nextLine(); 
                     Author author = new Author(authorFname, authorLname, authorAddress);
                     if (!library.authorExistsInLibrary(authorFname, authorLname) && bookORperiodical.equalsIgnoreCase("book")){
-                        library.addNewAuthor(author);
+                        library.addAuthor(author);
                         Book book = new Book(title,ISBN,publisher,availableCopies, author, itemType);
                         library.addLibraryItem(book);
                         System.out.println("Item Added Successfully! ");
@@ -79,7 +78,7 @@ public class Demo {
                         }
                         else{
                             if (!library.authorExistsInLibrary(authorFname, authorLname) && bookORperiodical.equalsIgnoreCase("periodical")) {
-                                library.addNewAuthor(author);
+                                library.addAuthor(author);
                                 Periodical periodical = new Periodical(title, ISBN, publisher, availableCopies, author, itemType);
                                 library.addLibraryItem(periodical);
                                 System.out.println("Item Added Successfully! ");
@@ -140,10 +139,6 @@ public class Demo {
                     Periodical bookItem = (Periodical) specifiedItem; // Cast to Book
                     bookItem.setInfo(newTitle, newISBN, newPublisher, newNumberOfCopies, newAuthorFirstName,newAuthorLastName, newAuthorAddress, authorDOBDate, newType);
                 }
-                    
-                
-
-                    
                     break;
                 case 3:
                     System.out.println("Deleting a library item...");
@@ -154,11 +149,45 @@ public class Demo {
                     break;
                 case 4:
                     System.out.println("Borrowing a library item...");
-                    // Add logic to borrow a library item
+                    System.out.print("Enter Patron name: ");
+                    String patronName = scanner.nextLine();
+                    Patron patron = library.searchPatronByName(patronName);
+                    
+                    if (patron == null) {
+                        System.out.println("Patron not found.");
+                        break;
+                    }
+                    
+                    System.out.print("Enter Item ISBN: ");
+                    String borrowISBN = scanner.nextLine();
+                    LibraryItem borrowItem = library.searchItemByISBN(borrowISBN);
+                    
+                    if (borrowItem == null) {
+                        System.out.println("Item not found.");
+                    } else {
+                        library.borrowItem(patron, borrowItem);  // Borrow the item
+                    }
                     break;
                 case 5:
                     System.out.println("Returning a library item...");
-                    // Add logic to return a library item
+                    System.out.print("Enter Patron name: ");
+                    String returnPatronName = scanner.nextLine();
+                    Patron returnPatron = library.searchPatronByName(returnPatronName);
+                    
+                    if (returnPatron == null) {
+                        System.out.println("Patron not found.");
+                        break;
+                    }
+                    
+                    System.out.print("Enter Item ISBN: ");
+                    String returnISBN = scanner.nextLine();
+                    LibraryItem returnItem = library.searchItemByISBN(returnISBN);
+                    
+                    if (returnItem == null) {
+                        System.out.println("Item not found.");
+                    } else {
+                        library.returnItem(returnPatron, returnItem);  // Return the item
+                    }
                     break;
                 case 6:
                     System.out.println("Exiting the system. Goodbye!");

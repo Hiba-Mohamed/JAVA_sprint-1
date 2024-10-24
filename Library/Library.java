@@ -38,24 +38,33 @@ public class Library {
         System.out.println(author.getName() + " has been added to the library's author list.");
     }
 
+    // Check if author exists in library
+    public boolean authorExistsInLibrary(String firstName, String lastName) {
+        for (Author author : authors) {
+            if (author.getName().equals(firstName + " " + lastName)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     // Edit an existing Author (by searching with name)
     public void editAuthor(String existingAuthorName, Author updatedAuthor) {
-    Author author = searchAuthorByName(existingAuthorName);
-    if (author != null) {
-        String[] nameParts = updatedAuthor.getName().split(" ");
-        String firstName = nameParts[0]; 
-        String lastName = (nameParts.length > 1) ? nameParts[1] : ""; 
-        author.setName(firstName, lastName); 
-        author.setAddress(updatedAuthor.getAddress());
-        author.setDateOfBirth(updatedAuthor.getDateOfBirth());
-        author.setWrittenItems(updatedAuthor.getWrittenItems());
-        System.out.println("Author " + existingAuthorName + " has been updated.");
+        Author author = searchAuthorByName(existingAuthorName);
+        if (author != null) {
+            String[] nameParts = updatedAuthor.getName().split(" ");
+            String firstName = nameParts[0];
+            String lastName = (nameParts.length > 1) ? nameParts[1] : "";
+            author.setName(firstName, lastName);
+            author.setAddress(updatedAuthor.getAddress());
+            author.setDateOfBirth(updatedAuthor.getDateOfBirth());
+            author.setWrittenItems(updatedAuthor.getWrittenItems());
+            System.out.println("Author " + existingAuthorName + " has been updated.");
         } else {
             System.out.println("Author " + existingAuthorName + " not found.");
         }
     }
-
-
+    
     // Remove an Author
     public void removeAuthor(Author author) {
         if (this.authors.remove(author)) {
@@ -89,6 +98,15 @@ public class Library {
         } else {
             System.out.println(patron.getName() + " was not found in the patron list.");
         }
+    }
+
+    public Patron searchPatronByName(String name) {
+        for (Patron patron : patrons) {  // Assuming `patrons` is a list or collection of Patron objects in your library class
+            if (patron.getName().equalsIgnoreCase(name)) {
+                return patron;  // Patron found, return it
+            }
+        }
+        return null;  // Patron not found
     }
 
     // Borrow an item by a patron
