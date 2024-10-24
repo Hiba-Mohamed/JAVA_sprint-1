@@ -1,21 +1,20 @@
 package Library;
 
-import Items.*;
-import Patrons.*;
+import Authors.*;
+import Items.LibraryItem;
+import Patrons.Patron;
 import java.util.ArrayList;
-
-import Authors.Author;
 
 public class Library {
     private ArrayList<LibraryItem> libraryItems;  // List of all library items (books, periodicals, etc.)
     private ArrayList<Patron> patrons;  // List of registered patrons
-    private ArrayList<Author> authors;
+    private ArrayList<Author> authors;  // List of all authors
 
     // Constructor
     public Library() {
         this.libraryItems = new ArrayList<>();  // Initialize the list of library items
         this.patrons = new ArrayList<>();       // Initialize the list of patrons
-        this.authors = new ArrayList<>();
+        this.authors = new ArrayList<>();       // Initialize the list of authors
     }
 
     // Add a new LibraryItem (book, periodical, etc.)
@@ -31,6 +30,50 @@ public class Library {
         } else {
             System.out.println(item.getTitle() + " was not found in the library.");
         }
+    }
+
+    // Add a new Author
+    public void addAuthor(Author author) {
+        this.authors.add(author);
+        System.out.println(author.getName() + " has been added to the library's author list.");
+    }
+
+    // Edit an existing Author (by searching with name)
+    public void editAuthor(String existingAuthorName, Author updatedAuthor) {
+    Author author = searchAuthorByName(existingAuthorName);
+    if (author != null) {
+        String[] nameParts = updatedAuthor.getName().split(" ");
+        String firstName = nameParts[0]; 
+        String lastName = (nameParts.length > 1) ? nameParts[1] : ""; 
+        author.setName(firstName, lastName); 
+        author.setAddress(updatedAuthor.getAddress());
+        author.setDateOfBirth(updatedAuthor.getDateOfBirth());
+        author.setWrittenItems(updatedAuthor.getWrittenItems());
+        System.out.println("Author " + existingAuthorName + " has been updated.");
+        } else {
+            System.out.println("Author " + existingAuthorName + " not found.");
+        }
+    }
+
+
+    // Remove an Author
+    public void removeAuthor(Author author) {
+        if (this.authors.remove(author)) {
+            System.out.println(author.getName() + " has been removed from the author list.");
+        } else {
+            System.out.println("Author " + author.getName() + " not found.");
+        }
+    }
+
+    // Search for an author by name
+    public Author searchAuthorByName(String name) {
+        for (Author author : this.authors) {
+            if (author.getName().equalsIgnoreCase(name)) {
+                return author;
+            }
+        }
+        System.out.println("Author with name '" + name + "' not found.");
+        return null;
     }
 
     // Register a new Patron
@@ -51,7 +94,7 @@ public class Library {
     // Borrow an item by a patron
     public void borrowItem(Patron patron, LibraryItem item) {
         if (this.libraryItems.contains(item) && patron != null) {
-            patron.borrowItem(item);  // Assuming Patron class has a borrowItem() method
+            patron.borrowItem(item);  
             System.out.println(patron.getName() + " has borrowed " + item.getTitle());
         } else {
             System.out.println("The item is not available or the patron is invalid.");
@@ -61,7 +104,7 @@ public class Library {
     // Return an item by a patron
     public void returnItem(Patron patron, LibraryItem item) {
         if (patron != null) {
-            patron.returnItem(item);  // Assuming Patron class has a returnItem() method
+            patron.returnItem(item);
             System.out.println(patron.getName() + " has returned " + item.getTitle());
         }
     }
@@ -88,20 +131,6 @@ public class Library {
         return null;
     }
 
-    public boolean authorExistsInLibrary(String firstName, String lastName) {
-        String fullName = firstName + " " + lastName;
-        for (Author author : this.authors) {
-            if (author.getName().equalsIgnoreCase(fullName)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public void addNewAuthor(Author author){
-        this.authors.add(author);
-    }
-
     // Search for a library item by ISBN
     public LibraryItem searchItemByISBN(String isbn) {
         for (LibraryItem item : this.libraryItems) {
@@ -113,10 +142,6 @@ public class Library {
         return null;
     }
 
-    public void editExistingItem(LibraryItem item){
-
-    }
-
     // Display all library items
     public void displayAllItems() {
         if (libraryItems.isEmpty()) {
@@ -125,6 +150,18 @@ public class Library {
             System.out.println("Library Items:");
             for (LibraryItem item : libraryItems) {
                 System.out.println(item);
+            }
+        }
+    }
+
+    // Display all authors
+    public void displayAllAuthors() {
+        if (authors.isEmpty()) {
+            System.out.println("No authors are registered.");
+        } else {
+            System.out.println("Library Authors:");
+            for (Author author : authors) {
+                System.out.println(author);
             }
         }
     }
