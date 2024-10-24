@@ -4,6 +4,7 @@ import Authors.*;
 import Items.LibraryItem;
 import Patrons.Patron;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Library {
     private ArrayList<LibraryItem> libraryItems;  // List of all library items (books, periodicals, etc.)
@@ -112,7 +113,7 @@ public class Library {
     // Borrow an item by a patron
     public void borrowItem(Patron patron, LibraryItem item) {
         if (this.libraryItems.contains(item) && patron != null) {
-            patron.borrowItem(item);  
+            patron.borrowItem(item);
             System.out.println(patron.getName() + " has borrowed " + item.getTitle());
         } else {
             System.out.println("The item is not available or the patron is invalid.");
@@ -139,15 +140,18 @@ public class Library {
     }
 
     // Search for a library item by author
-    public LibraryItem searchItemByAuthor(String authorName) {
-        for (LibraryItem item : this.libraryItems) {
-            if (item.getAuthor() != null && item.getAuthor().getName().equalsIgnoreCase(authorName)) {
-                return item;
-            }
+    public List<LibraryItem> searchItemsByAuthor(String authorName) {
+    List<LibraryItem> foundItems = new ArrayList<>();
+    for (LibraryItem item : this.libraryItems) {
+        if (item.getAuthor() != null && item.getAuthor().getName().equalsIgnoreCase(authorName)) {
+            foundItems.add(item);
         }
-        System.out.println("No items found for author '" + authorName + "'.");
-        return null;
     }
+    if (foundItems.isEmpty()) {
+        System.out.println("No items found for author '" + authorName + "'.");
+    }
+        return foundItems; // Return all found items
+    }  
 
     // Search for a library item by ISBN
     public LibraryItem searchItemByISBN(String isbn) {
