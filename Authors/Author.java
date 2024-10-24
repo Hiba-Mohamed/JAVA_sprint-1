@@ -18,11 +18,18 @@ public class Author{
         this.address = address;
         this.writtenItems = new ArrayList<LibraryItem>();
     }
-
-    public Author(String firstName, String lastName, String address, ArrayList<LibraryItem> writtenItems ){
+        public Author(String firstName, String lastName, String address,  Date dateOfBirth){
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;
+        this.dateOfBirth = dateOfBirth ;
+    }
+
+    public Author(String firstName, String lastName, String address,  Date dateOfBirth, ArrayList<LibraryItem> writtenItems ){
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.address = address;
+        this.dateOfBirth = dateOfBirth ;
         this.writtenItems = writtenItems;
     }
 
