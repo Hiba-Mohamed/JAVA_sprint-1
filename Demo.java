@@ -25,6 +25,10 @@ public class Demo {
         Library library = new Library();
             Book book1 = new Book("BookTitle1", "BOOKISBN1", "BOOKpublisher1", 9, new Author("firstName", "lastName", "1street"), "audio");
             Periodical periodical1 = new Periodical("PERIODICALTitle1", "PERIODICALISBN1", "PERIODICALpublisher1", 9, new Author("firstName", "lastName", "1street"), "printed");
+            Patron patron1 = new Patron("patron1", "123street", "1234567");
+            Patron patron2 = new Patron("patron2", "456street", "98764");
+            library.registerPatron(patron1);
+            library.registerPatron(patron2);
             library.addLibraryItem(book1);
             library.addLibraryItem(periodical1);
         do {
@@ -75,8 +79,6 @@ public class Demo {
                         System.out.println("Item Added Successfully! ");
                         System.out.println("");
                         library.displayAllItems();
-                        
-
                     }
                     else{
                         if (library.authorExistsInLibrary(authorFname, authorLname) && bookORperiodical.equalsIgnoreCase("book")){
@@ -113,7 +115,6 @@ public class Demo {
                     }
                     break;
                 case 2:
-                    library.displayAllItems();
                     System.out.println("Editing an existing library item...");
                     System.out.print("Enter Item ISBN: ");
                     String isbn = scanner.nextLine();
@@ -170,6 +171,7 @@ public class Demo {
                     String itemISBN = scanner.nextLine();
                     LibraryItem item = library.searchItemByISBN(itemISBN);
                     library.removeLibraryItem(item);
+                    library.displayAllItems();
                     System.out.println("");
                     break;
                 case 4:
