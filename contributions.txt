@@ -1,0 +1,19 @@
+Hiba:
+
+Developed the LibraryItem class, which includes defining attributes, methods for managing item details, and item-specific functionality.
+Created the Author class, implementing author details and ensuring integration with LibraryItem objects.
+Implemented and tested the following menu options in the Demo class:
+Option 1: Add Library Item
+Option 2: Edit Library Item
+Option 3: Delete Library Item
+
+
+
+Summaya:
+
+Developed the Patron class to manage library patrons, including attributes for tracking borrowed items and other patron-specific details.
+Contributed to enhancing LibraryItem by adding methods for managing item borrowing and returning.
+Implemented and tested the following menu options in the Demo class:
+Option 4: Borrow Library Item
+Option 5: Return Library Item
+Option 6: Exit the system
