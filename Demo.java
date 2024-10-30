@@ -85,7 +85,7 @@ public class Demo {
         library.registerPatron(patron2);
         library.registerPatron(patron3);
 
-        System.out.println("\nData loaded successfully");
+        printStyledMessage("\nData loaded successfully");
     }
 
     private static void addLibraryItem(Scanner scanner, Library library) {
@@ -121,11 +121,11 @@ public class Demo {
         } else if (itemType.equals("periodical")) {
             library.addLibraryItem(new Periodical(title, ISBN, publisher, availableCopies, author, format));
         } else {
-            System.out.println("Invalid item type. Item not added.");
+            printStyledMessage("Invalid item type. Item not added.");
             return;
         }
 
-        System.out.println("Item added successfully!");
+        printStyledMessage("Item added successfully!");
         library.displayAllItems();
     }
 
@@ -136,7 +136,7 @@ public class Demo {
         LibraryItem specifiedItem = library.searchItemByISBN(isbn);
         
         if (specifiedItem == null) {
-            System.out.println("Item not found.");
+            printStyledMessage("Item not found.");
             return;
         }
 
@@ -170,7 +170,7 @@ public class Demo {
             periodicalItem.setInfo(newTitle, isbn, newPublisher, newCopies, newAuthorFname, newAuthorLname, newAuthorAddress, authorDOBDate, newType);
         }
 
-        System.out.println("Item edited successfully!");
+        printStyledMessage("Item edited successfully!");
         library.displayAllItems();
     }
 
@@ -181,10 +181,10 @@ public class Demo {
         LibraryItem item = library.searchItemByISBN(itemISBN);
 
         if (item == null) {
-            System.out.println("Item not found.");
+            printStyledMessage("Item not found.");
         } else {
             library.removeLibraryItem(item);
-            System.out.println("Item deleted successfully!");
+            printStyledMessage("Item deleted successfully!");
             library.displayAllItems();
         }
     }
@@ -196,7 +196,7 @@ public class Demo {
         Patron patron = library.searchPatronByName(patronName);
 
         if (patron == null) {
-            System.out.println("Patron not found.");
+            printStyledMessage("Patron not found.");
             return;
         }
 
@@ -205,10 +205,10 @@ public class Demo {
         LibraryItem borrowItem = library.searchItemByISBN(borrowISBN);
 
         if (borrowItem == null) {
-            System.out.println("Item not found.");
+            printStyledMessage("Item not found.");
         } else {
             library.borrowItem(patron, borrowItem);
-            System.out.println("Item borrowed successfully!");
+            printStyledMessage("Item borrowed successfully!");
         }
     }
 
@@ -219,7 +219,7 @@ public class Demo {
         Patron returnPatron = library.searchPatronByName(returnPatronName);
 
         if (returnPatron == null) {
-            System.out.println("Patron not found.");
+            printStyledMessage("Patron not found.");
             return;
         }
 
@@ -228,7 +228,7 @@ public class Demo {
         LibraryItem returnItem = library.searchItemByISBN(returnISBN);
 
         if (returnItem == null) {
-            System.out.println("Item not found.");
+            printStyledMessage("Item not found.");
             return;
         }
         returnPatron.returnItem(returnItem);
@@ -239,7 +239,7 @@ public class Demo {
             String dobInput = scanner.nextLine();
             return LocalDate.parse(dobInput, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
         } catch (DateTimeParseException e) {
-            System.out.println("Invalid date format. Please use 'yyyy-MM-dd'.");
+            printStyledMessage("Invalid date format. Please use 'yyyy-MM-dd'.");
             return null;
         }
     }
@@ -258,9 +258,9 @@ public class Demo {
         // Check if the author already exists in the library
         if (!library.authorExistsInLibrary(firstName, lastName)) {
             library.addAuthor(newAuthor);
-            System.out.println("Author added successfully!");
+            printStyledMessage("Author added successfully!");
         } else {
-            System.out.println("This author already exists in the library.");
+            printStyledMessage("This author already exists in the library.");
         }
     }
     
@@ -275,9 +275,9 @@ public class Demo {
 
         if (authorToRemove != null) {
             library.removeAuthor(authorToRemove);
-            System.out.println("Author removed successfully!");
+            printStyledMessage("Author removed successfully!");
         } else {
-            System.out.println("Author not found in the library.");
+            printStyledMessage("Author not found in the library.");
         }
     }
 
@@ -292,7 +292,7 @@ public class Demo {
 
         Patron newPatron = new Patron(name, address, phoneNumber);
         library.registerPatron(newPatron);
-        System.out.println("Patron added successfully!");
+        printStyledMessage("Patron added successfully!");
     }
 
     private static void unregisterPatron(Scanner scanner, Library library) {
@@ -302,10 +302,24 @@ public class Demo {
         Patron patron = library.searchPatronByName(patronName);
 
         if (patron == null) {
-            System.out.println("Patron not found.");
+            printStyledMessage("Patron not found.");
         } else {
             library.unregisterPatron(patron);
-            System.out.println("Patron removed successfully!");
+            printStyledMessage("Patron removed successfully!");
         }
     }
+
+    public static void printStyledMessage(String message) {
+        // Calculate the length of the message for the rectangle width
+        int length = message.length(); // Get the actual message length
+        int totalLength = length + 4; // +4 for padding and borders
+
+        // Print the top border
+        System.out.println("+" + "-".repeat(totalLength) + "+");
+        // Print the message with side borders
+        System.out.println("| " + message + " |");
+        // Print the bottom border
+        System.out.println("+" + "-".repeat(totalLength) + "+");
+    }
+
 }
