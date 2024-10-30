@@ -230,10 +230,13 @@ public class Demo {
 
         if (returnItem == null) {
             System.out.println("Item not found.");
-        } else {
-            library.returnItem(returnPatron, returnItem);
-            System.out.println("Item returned successfully!");
+            return;
         }
+        // } else {
+        //     library.returnItem(returnPatron, returnItem);
+        //     System.out.println("Item returned successfully!");
+        // }
+        returnPatron.returnItem(returnItem);
     }
 
     private static LocalDate parseDate(Scanner scanner) {
