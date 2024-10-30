@@ -19,16 +19,20 @@ public class Demo {
 
         do {
             System.out.println("\nWelcome to the Library Management System");
-            System.out.println("1. Add Library Item");
-            System.out.println("2. Edit Library Item");
-            System.out.println("3. Delete Library Item");
-            System.out.println("4. Borrow Library Item");
-            System.out.println("5. Return Library Item");
-            System.out.println("6. Add Patron"); // New option
-            System.out.println("7. Remove Patron"); // New option
-            System.out.println("8. Exit");
+            System.out.println("\nPlease choose an option to continue");
             System.out.println("\n");
-            System.out.print("Enter your choice (1-8): ");
+            System.out.println("01. Add Library Item");
+            System.out.println("02. Edit Library Item");
+            System.out.println("03. Delete Library Item");
+            System.out.println("04. Borrow Library Item");
+            System.out.println("05. Return Library Item");
+            System.out.println("06. Add a new Author to the library");
+            System.out.println("07. Remove existing Author from the library");
+            System.out.println("08. Add Patron"); 
+            System.out.println("09. Remove Patron"); 
+            System.out.println("10. Exit");
+            System.out.println("\n");
+            System.out.print("Enter your choice (1-10): ");
             choice = scanner.nextInt();
             scanner.nextLine();
 
@@ -38,12 +42,14 @@ public class Demo {
                 case 3 -> deleteLibraryItem(scanner, library);
                 case 4 -> borrowLibraryItem(scanner, library);
                 case 5 -> returnLibraryItem(scanner, library);
-                case 6 -> addPatron(scanner, library); // Call the addPatron method
-                case 7 -> unregisterPatron(scanner, library); // Call the removePatron method
-                case 8 -> System.out.println("Exiting the system. Goodbye!");
+                case 6 -> addAuthor(scanner, library);
+                case 7 -> removeAuthor(scanner, library);
+                case 8 -> addPatron(scanner, library); 
+                case 9 -> unregisterPatron(scanner, library); 
+                case 10 -> System.out.println("Exiting the system. Goodbye!");
                 default -> System.out.println("Invalid choice. Please enter a number between 1 and 8.");
             }
-        } while (choice != 8);
+        } while (choice != 10);
 
         scanner.close();
     }
@@ -237,6 +243,43 @@ public class Demo {
         }
     }
 
+    private static void addAuthor(Scanner scanner, Library library) {
+        System.out.println("Adding a new author to the library...");
+        System.out.print("Enter Author's First Name: ");
+        String firstName = scanner.nextLine();
+        System.out.print("Enter Author's Last Name: ");
+        String lastName = scanner.nextLine();
+        System.out.print("Enter Author's Address: ");
+        String address = scanner.nextLine();
+
+        Author newAuthor = new Author(firstName, lastName, address);
+
+        // Check if the author already exists in the library
+        if (!library.authorExistsInLibrary(firstName, lastName)) {
+            library.addAuthor(newAuthor);
+            System.out.println("Author added successfully!");
+        } else {
+            System.out.println("This author already exists in the library.");
+        }
+    }
+    
+    private static void removeAuthor(Scanner scanner, Library library) {
+        System.out.println("Removing an author from the library...");
+        System.out.print("Enter Author's First Name: ");
+        String firstName = scanner.nextLine();
+        System.out.print("Enter Author's Last Name: ");
+        String lastName = scanner.nextLine();
+
+        Author authorToRemove = library.searchAuthorByName(firstName, lastName); 
+
+        if (authorToRemove != null) {
+            library.removeAuthor(authorToRemove);
+            System.out.println("Author removed successfully!");
+        } else {
+            System.out.println("Author not found in the library.");
+        }
+    }
+
     private static void addPatron(Scanner scanner, Library library) {
         System.out.println("Adding a new patron...");
         System.out.print("Enter Patron Full Name: ");
@@ -260,7 +303,7 @@ public class Demo {
         if (patron == null) {
             System.out.println("Patron not found.");
         } else {
-            library.unregisterPatron(patron); // Assuming there's a method to remove patrons
+            library.unregisterPatron(patron);
             System.out.println("Patron removed successfully!");
         }
     }

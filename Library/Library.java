@@ -50,21 +50,26 @@ public class Library {
     }
 
     // Edit an existing Author (by searching with name)
-    public void editAuthor(String existingAuthorName, Author updatedAuthor) {
-        Author author = searchAuthorByName(existingAuthorName);
-        if (author != null) {
-            String[] nameParts = updatedAuthor.getName().split(" ");
-            String firstName = nameParts[0];
-            String lastName = (nameParts.length > 1) ? nameParts[1] : "";
-            author.setName(firstName, lastName);
-            author.setAddress(updatedAuthor.getAddress());
-            author.setDateOfBirth(updatedAuthor.getDateOfBirth());
-            author.setWrittenItems(updatedAuthor.getWrittenItems());
-            System.out.println("Author " + existingAuthorName + " has been updated.");
-        } else {
-            System.out.println("Author " + existingAuthorName + " not found.");
-        }
+ public void editAuthor(String existingAuthorName, Author updatedAuthor) {
+    // Split the existing author's full name into first and last names
+    String[] nameParts = existingAuthorName.split(" ");
+    String firstName = nameParts[0];
+    String lastName = (nameParts.length > 1) ? nameParts[1] : "";
+
+    // Search by first and last names
+    Author author = searchAuthorByName(firstName, lastName);
+    if (author != null) {
+        // Update author details
+        author.setName(firstName, lastName);
+        author.setAddress(updatedAuthor.getAddress());
+        author.setDateOfBirth(updatedAuthor.getDateOfBirth());
+        author.setWrittenItems(updatedAuthor.getWrittenItems());
+        System.out.println("Author " + existingAuthorName + " has been updated.");
+    } else {
+        System.out.println("Author " + existingAuthorName + " not found.");
     }
+}
+
     
     // Remove an Author
     public void removeAuthor(Author author) {
@@ -76,13 +81,14 @@ public class Library {
     }
 
     // Search for an author by name
-    public Author searchAuthorByName(String name) {
+    public Author searchAuthorByName(String firstName, String lastName) {
+        String fullName = firstName + " " + lastName;
         for (Author author : this.authors) {
-            if (author.getName().equalsIgnoreCase(name)) {
-                return author;
+        if (author.getName().equalsIgnoreCase(fullName)) {
+            return author;
             }
         }
-        System.out.println("Author with name '" + name + "' not found.");
+        System.out.println("Author with name '" + fullName + "' not found.");
         return null;
     }
 
