@@ -4,7 +4,7 @@ package Items;
 import Authors.*;
 import java.util.Date;
 public class LibraryItem {
-    private static int nextId = 0;
+    private static int nextId = 1;
     private int ID;
     private String title;
     private String isbn;
