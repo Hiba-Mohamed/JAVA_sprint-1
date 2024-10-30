@@ -15,18 +15,6 @@ public class Demo {
         Scanner scanner = new Scanner(System.in);
         int choice;
         Library library = new Library();
-
-        // // Sample data for testing
-        // Book book1 = new Book("BookTitle1", "BOOKISBN1", "BOOKpublisher1", 9, new Author("firstName", "lastName", "1street"), "audio");
-        // Periodical periodical1 = new Periodical("PERIODICALTitle1", "PERIODICALISBN1", "PERIODICALpublisher1", 9, new Author("firstName", "lastName", "1street"), "printed");
-        // Patron patron1 = new Patron("patron1", "123street", "1234567");
-        // Patron patron2 = new Patron("patron2", "456street", "98764");
-        // library.registerPatron(patron1);
-        // library.registerPatron(patron2);
-        // library.addLibraryItem(book1);
-        // library.addLibraryItem(periodical1);
-
-        // Load initial data
         loadData(library);
 
         do {
@@ -36,9 +24,11 @@ public class Demo {
             System.out.println("3. Delete Library Item");
             System.out.println("4. Borrow Library Item");
             System.out.println("5. Return Library Item");
-            System.out.println("6. Exit");
+            System.out.println("6. Add Patron"); // New option
+            System.out.println("7. Remove Patron"); // New option
+            System.out.println("8. Exit");
             System.out.println("\n");
-            System.out.print("Enter your choice (1-6): ");
+            System.out.print("Enter your choice (1-8): ");
             choice = scanner.nextInt();
             scanner.nextLine();
 
@@ -48,10 +38,12 @@ public class Demo {
                 case 3 -> deleteLibraryItem(scanner, library);
                 case 4 -> borrowLibraryItem(scanner, library);
                 case 5 -> returnLibraryItem(scanner, library);
-                case 6 -> System.out.println("Exiting the system. Goodbye!");
-                default -> System.out.println("Invalid choice. Please enter a number between 1 and 6.");
+                case 6 -> addPatron(scanner, library); // Call the addPatron method
+                case 7 -> unregisterPatron(scanner, library); // Call the removePatron method
+                case 8 -> System.out.println("Exiting the system. Goodbye!");
+                default -> System.out.println("Invalid choice. Please enter a number between 1 and 8.");
             }
-        } while (choice != 6);
+        } while (choice != 8);
 
         scanner.close();
     }
@@ -192,7 +184,7 @@ public class Demo {
 
     private static void borrowLibraryItem(Scanner scanner, Library library) {
         System.out.println("Borrowing a library item...");
-        System.out.print("Enter Patron Name: ");
+        System.out.print("Enter Patron Full Name: ");
         String patronName = scanner.nextLine();
         Patron patron = library.searchPatronByName(patronName);
 
@@ -215,7 +207,7 @@ public class Demo {
 
     private static void returnLibraryItem(Scanner scanner, Library library) {
         System.out.println("Returning a library item...");
-        System.out.print("Enter Patron Name: ");
+        System.out.print("Enter Patron Full Name: ");
         String returnPatronName = scanner.nextLine();
         Patron returnPatron = library.searchPatronByName(returnPatronName);
 
@@ -232,10 +224,6 @@ public class Demo {
             System.out.println("Item not found.");
             return;
         }
-        // } else {
-        //     library.returnItem(returnPatron, returnItem);
-        //     System.out.println("Item returned successfully!");
-        // }
         returnPatron.returnItem(returnItem);
     }
 
@@ -246,6 +234,34 @@ public class Demo {
         } catch (DateTimeParseException e) {
             System.out.println("Invalid date format. Please use 'yyyy-MM-dd'.");
             return null;
+        }
+    }
+
+    private static void addPatron(Scanner scanner, Library library) {
+        System.out.println("Adding a new patron...");
+        System.out.print("Enter Patron Full Name: ");
+        String name = scanner.nextLine();
+        System.out.print("Enter Patron Address: ");
+        String address = scanner.nextLine();
+        System.out.print("Enter Patron Phone Number: ");
+        String phoneNumber = scanner.nextLine();
+
+        Patron newPatron = new Patron(name, address, phoneNumber);
+        library.registerPatron(newPatron);
+        System.out.println("Patron added successfully!");
+    }
+
+    private static void unregisterPatron(Scanner scanner, Library library) {
+        System.out.println("Removing a patron...");
+        System.out.print("Enter Patron Full Name to remove: ");
+        String patronName = scanner.nextLine();
+        Patron patron = library.searchPatronByName(patronName);
+
+        if (patron == null) {
+            System.out.println("Patron not found.");
+        } else {
+            library.unregisterPatron(patron); // Assuming there's a method to remove patrons
+            System.out.println("Patron removed successfully!");
         }
     }
 }
