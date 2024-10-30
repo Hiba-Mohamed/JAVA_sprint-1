@@ -124,9 +124,8 @@ public class Demo {
             printStyledMessage("Invalid item type. Item not added.");
             return;
         }
-
-        printStyledMessage("Item added successfully!");
         library.displayAllItems();
+        printStyledMessage("Item added successfully!");
     }
 
     private static void editLibraryItem(Scanner scanner, Library library) {
@@ -169,9 +168,8 @@ public class Demo {
         } else if (specifiedItem instanceof Periodical periodicalItem) {
             periodicalItem.setInfo(newTitle, isbn, newPublisher, newCopies, newAuthorFname, newAuthorLname, newAuthorAddress, authorDOBDate, newType);
         }
-
-        printStyledMessage("Item edited successfully!");
         library.displayAllItems();
+        printStyledMessage("Item edited successfully!");
     }
 
     private static void deleteLibraryItem(Scanner scanner, Library library) {
@@ -184,8 +182,8 @@ public class Demo {
             printStyledMessage("Item not found.");
         } else {
             library.removeLibraryItem(item);
-            printStyledMessage("Item deleted successfully!");
             library.displayAllItems();
+            printStyledMessage("Item deleted successfully!");
         }
     }
 
@@ -258,6 +256,7 @@ public class Demo {
         // Check if the author already exists in the library
         if (!library.authorExistsInLibrary(firstName, lastName)) {
             library.addAuthor(newAuthor);
+            library.displayAllAuthors();
             printStyledMessage("Author added successfully!");
         } else {
             printStyledMessage("This author already exists in the library.");
@@ -275,6 +274,7 @@ public class Demo {
 
         if (authorToRemove != null) {
             library.removeAuthor(authorToRemove);
+            library.displayAllAuthors();
             printStyledMessage("Author removed successfully!");
         } else {
             printStyledMessage("Author not found in the library.");
@@ -292,6 +292,7 @@ public class Demo {
 
         Patron newPatron = new Patron(name, address, phoneNumber);
         library.registerPatron(newPatron);
+        library.displayAllPatrons();
         printStyledMessage("Patron added successfully!");
     }
 
@@ -305,6 +306,7 @@ public class Demo {
             printStyledMessage("Patron not found.");
         } else {
             library.unregisterPatron(patron);
+            library.displayAllPatrons();
             printStyledMessage("Patron removed successfully!");
         }
     }
