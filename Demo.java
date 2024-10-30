@@ -57,7 +57,8 @@ public class Demo {
     private static void loadData(Library library) {
         Author author1 = new Author("John", "Doe", "123 Main City");
         Author author2 = new Author("Jane", "Smith", "456 Elm St");
-        
+        library.addAuthor(author1);
+        library.addAuthor(author2);
         Book book1 = new Book("Mystery of the Old House", "ISBN001", "Penguin", 5, author1, "printed");
         Book book2 = new Book("The Adventures of Time", "ISBN002", "HarperCollins", 3, author2, "audio");
         Book book3 = new Book("The Space Beyond", "ISBN003", "Random House", 2, author1, "electronic");
