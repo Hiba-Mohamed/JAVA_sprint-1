@@ -57,6 +57,8 @@ public class Demo {
     private static void loadData(Library library) {
         Author author1 = new Author("John", "Doe", "123 Main City");
         Author author2 = new Author("Jane", "Smith", "456 Elm St");
+        System.out.println("\n");
+        System.out.println("Authors:");
         library.addAuthor(author1);
         library.addAuthor(author2);
         Book book1 = new Book("Mystery of the Old House", "ISBN001", "Penguin", 5, author1, "printed");
@@ -68,7 +70,7 @@ public class Demo {
         Periodical periodical2 = new Periodical("Science Daily", "PERIODICAL002", "SciencePress", 6, author2, "electronic");
         Periodical periodical3 = new Periodical("Tech Monthly", "PERIODICAL003", "Tech Today", 5, author1, "printed");
 
-        System.out.println("\n");
+        System.out.println("\nBooks & Periodicals:");
         library.addLibraryItem(book1);
         library.addLibraryItem(book2);
         library.addLibraryItem(book3);
@@ -76,16 +78,17 @@ public class Demo {
         library.addLibraryItem(periodical1);
         library.addLibraryItem(periodical2);
         library.addLibraryItem(periodical3);
+        
 
         Patron patron1 = new Patron("Alice Johnson", "789 Pine St", "555-1234");
         Patron patron2 = new Patron("Bob Williams", "321 Oak St", "555-5678");
         Patron patron3 = new Patron("Carol White", "654 Maple St", "555-8765");
-
+        System.out.println("\nPatrons:");
         library.registerPatron(patron1);
         library.registerPatron(patron2);
         library.registerPatron(patron3);
 
-        printStyledMessage("\nData loaded successfully");
+        printStyledMessage("Data loaded successfully");
     }
 
     private static void addLibraryItem(Scanner scanner, Library library) {
